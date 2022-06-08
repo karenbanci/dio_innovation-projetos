@@ -1,5 +1,7 @@
-const array = [3,4,5,12,12,15,18,20,20,23,26,29,32,32,33,34,36];
+// a diferença de array para set, é que set só mantém um elemento exclusivo dentro das [], n
+// não tem elemento exclusivos
 
+const array = [3,4,5,12,12,15,18,20,20,23,26,29,32,32,33,34,36];
 
 function valoresUnicos(arr) {
 
