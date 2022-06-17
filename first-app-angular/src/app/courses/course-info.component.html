@@ -1,0 +1,60 @@
+<h2>Course Information</h2>
+
+<hr/>
+<!-- o # aponta que é variável de template -->
+<form #courseForm="ngForm" class=" row mt-2 g-3">
+</form>
+  <div class="form-group  row mt-2" >
+    <label for="" class="col-sm-2 col-form-label">Name: </label>
+    <div class="col-sm-1">
+      <!-- course.name irá entrar na variável Course to data bind com o name do Course-->
+      <!-- ngClass podemos passar propriedades dinâmicas para a nossa propriedade -->
+      <input [(ngModel)]="course.name" required name="name" #courseName="ngModel"
+      [ngClass]="{'is-invalid' : courseName.invalid}" class="input-group-text" >
+
+      <div class="invalid-feedback">
+        <span>Course name is required</span>
+      </div>
+      <!-- {{courseName.value}} -->
+      <!-- Invalid {{courseName.invalid}} -->
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="" class="col-sm-2 col-form-label">Price: </label>
+      <div class="col-sm-1">
+        <input [(ngModel)]="course.price" required name="price" type="number" #coursePrice="ngModel"
+        [ngClass]="{'is-invalid' : coursePrice.invalid}" class="input-group-text">
+
+        <div class="invalid-feedback">
+          <span>Course price is required</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group  row mt-2">
+      <label for="" class="col-sm-2 col-form-label">Rating: </label>
+      <div class="col-sm-1">
+        <input [(ngModel)]="course.rating" required name="rating" type="number" #courseRating="ngModel"
+        [ngClass]="{'is-invalid' : courseRating.invalid}" class="input-group-text">
+
+        <div class="invalid-feedback">
+          <span>Course rating is required</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group  row mt-2">
+      <label for="" class="col-sm-2 col-form-label">Descripton:</label>
+      <div class="col-sm-1">
+        <textarea [(ngModel)]="course.description" required name="description" #courseDescription="ngModel" [ngClass]="{'is-invalid' : courseDescription.invalid}" class="input-group-text"></textarea>
+
+        <div class="invalid-feedback">
+          <span>Course description is required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- [disabled] vai verificar se todos os atributos estao validos, quando estiver inválido, ele vai desabilitar o botão  -->
+    <!-- o método (click)="save()" vai estar dentro do course-info-component -->
+    <button [disabled]="courseForm.invalid" (click)="save()" class="btn btn-primary mr-2">Save</button>
+    <button [routerLink]="['/courses']" class="btn btn-secondary mr-2">Back</button>

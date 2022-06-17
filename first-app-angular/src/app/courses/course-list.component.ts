@@ -4,7 +4,8 @@ import { CourseService } from './course.service';
 
 @Component({
   // aqui estou criando a tag <app-course-list></app-course-list> que vai ser inserida em app.component.html
-  selector: 'app-course-list',
+  //  comentei a linha de baixo, porque deixamos de usá-lo a partir do momento que criamos uma rota
+  // selector: 'app-course-list',
   // estou direcionando meu URL
   templateUrl: './course-list.component.html'
 })
