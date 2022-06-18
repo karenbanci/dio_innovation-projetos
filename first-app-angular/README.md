@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## About my application
+
+This is my first application in Angular and TypeScript. It was developed with the DioInovation.
+
+## Homepage
+
+![HomePage](url'./../images-readme/homepage.png')
+
+## Homepage
+
+![Editpage](url'./../images-readme/editpage.png')
+
+## Error 404
+
+![Error 404](url'./../images-readme/error-404.png')
