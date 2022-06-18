@@ -1,5 +1,7 @@
 import { Course } from './course';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +10,34 @@ import { Injectable } from '@angular/core';
 
 export class CourseService {
 
-  retrieveAll(): Course[]{
-    return COURSES;
+  // pra fazer requisicao http
+  private coursesUrl: string = 'http://localhost:3100/api/courses';
+
+  constructor(private httpClient: HttpClient){
+
   }
 
-  retrieveById(id: number): Course | undefined {
-    return COURSES.find((courseIterator: Course) => courseIterator.id === id)
+// Observable vai envelopar o response, além dele ser assincrono, a gente precisa de um subscribe para executar a ação
+  retrieveAll(): Observable<Course[]>{
+    return this.httpClient.get<Course[]>(this.coursesUrl);
   }
 
-  save(course: Course): void {
+  retrieveById(id: number): Observable<Course> {
+    return this.httpClient.get<Course>(`${this.coursesUrl}/${id}`);
+  }
+
+  save(course: Course): Observable<Course> {
     if(course.id){
-      const index = COURSES.findIndex((courseIterator: Course) => courseIterator.id === course.id);
-      COURSES[index] = course;
+      return this.httpClient.put<Course>(`${this.coursesUrl}/${course.id}`, course)
+    } else {
+      return this.httpClient.post<Course>(`${this.coursesUrl}`, course)
     }
   }
+
+  deleteById(id: number): Observable<any>{
+    return this.httpClient.delete<any>(`${this.coursesUrl}/${id}`)
+  }
+
 }
 
 var COURSES: Course[] = [

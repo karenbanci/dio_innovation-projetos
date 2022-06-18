@@ -3,7 +3,7 @@
 <div class="form-group row">
   <label for="" class="col-sm-2 col-form-label"> Filter by:</label>
 
-  <div class="col-sm-1">
+  <div class="col-sm-10">
     <input [(ngModel)]="filter" class="form-control">
   </div>
 </div>
@@ -36,7 +36,8 @@
       </td>
       <td>
         <!-- primeiro atributo é a rota(endereço do path) e o segundo atributo de url -->
-        <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit</a>
+        <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary mr-3">Edit</a>
+        <button (click)="deleteById(course.id)"  class="btn btn-danger">Delete</button>
       </td>
     </tr>
   </tbody>

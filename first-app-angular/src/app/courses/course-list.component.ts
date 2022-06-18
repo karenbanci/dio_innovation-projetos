@@ -27,8 +27,34 @@ export class CourseListComponent implements OnInit {
 
   // vai inicializar o array de courses
   ngOnInit(): void {
-    this._courses = this.courseService.retrieveAll();
-    this.filteredCourses = this._courses;
+    this.retrieveAll();
+  }
+
+  retrieveAll(): void {
+    // o subscribe é subscrever o contrato, de fato ele vai chamar a nossa requisição
+    this.courseService.retrieveAll().subscribe({
+      // quando a requisição dá certo, o next retorna alguma coisa para trabalharmos. Chamar a callback function
+      next: courses => {
+        // o courses é exatamente o retorno do <Course[]> que está no course.service.ts
+        this._courses = courses;
+        this.filteredCourses = this._courses;
+      },
+      // caso dê algum problema, ele vai dar error no console
+      error: err => console.log('Error', err)
+    })
+  }
+
+  deleteById(courseId: number): void {
+    // vou chamar, e passar o id que estou informando através do nosso template
+    this.courseService.deleteById(courseId).subscribe({
+      // chamamos a funcao dessa forma
+      next: () => {
+        console.log('Deleted');
+        // filtrar novamente, após deletar o curso (vamos atualizar a lista de curso)
+        this.retrieveAll()
+      },
+      error: err => console.log('Error', err)
+    })
   }
 
   // definido no input

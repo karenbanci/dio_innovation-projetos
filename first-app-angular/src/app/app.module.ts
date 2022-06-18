@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -25,6 +27,7 @@ import { ReplacePipe } from './pipe/replace.pipe';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     // forRoot espera um objeto de rotas, que são as rotas da aplicação
     RouterModule.forRoot([
       { // vamos linkar esse path para outro componente
