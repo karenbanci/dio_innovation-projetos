@@ -32,12 +32,12 @@ This is my first application in Angular and TypeScript. It was developed with th
 
 ## Homepage
 
-![HomePage](../images-readme/homepage.png)
+![HomePage](./images-readme/homepage.png)
 
 ## Homepage
 
-![Editpage](../images-readme/editpage.png)
+![Editpage](./images-readme/editpage.png)
 
 ## Error 404
 
-![Error 404](../images-readme/error-404.png)
+![Error 404](./images-readme/error-404.png)
